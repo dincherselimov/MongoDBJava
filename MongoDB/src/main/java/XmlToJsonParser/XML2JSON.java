@@ -1,5 +1,6 @@
 package XmlToJsonParser;
 
+import Config.Config;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
@@ -14,13 +15,14 @@ import java.io.FileReader;
 import java.io.IOException;
 import static java.lang.System.*;
 
-public class XML2JSON
-{
+/**
+ * Parsing XML files into JSONObject
+ */
+public class XML2JSON {
     public static int PRETTY_PRINT_INDENT_FACTOR = 4;
 
-    public DBObject parse() throws IOException {
+    public DBObject parse(File file) throws IOException {
 
-        File file = new File("src/main/java/XMLFiles/node.xml");
         BufferedReader br = new BufferedReader(new FileReader(file));
         int ptr = 0;
         StringBuilder builder = new StringBuilder();
@@ -42,7 +44,6 @@ public class XML2JSON
      * Read the content of xml file
      * Parse xml to json
      * Parse json to JSONObject
-     * Add the parsed xml to the mongodb database
      * @return
      */
     public DBObject parse1() {
